@@ -25,11 +25,13 @@ import {
   UniswapPairContract,
   UniswapRouterContract, WethContract
 } from "@unleashed-business/ts-web3-commons";
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
+import { WEB3_CONNECTION } from "../nest-commons.const";
 
 @Injectable()
 export class NestWeb3ServicesContainer extends Web3ServicesContainer {
   constructor(
+    @Inject(WEB3_CONNECTION)
     walletConnection: ReadOnlyWeb3Connection,
     transactionHelper: TransactionRunningHelperService
   ) {
