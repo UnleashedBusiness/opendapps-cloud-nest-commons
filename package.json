@@ -1,6 +1,6 @@
 {
   "name": "@unleashed-business/opendapps-cloud-nest-commons",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -11,8 +11,7 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^20.6.3",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
