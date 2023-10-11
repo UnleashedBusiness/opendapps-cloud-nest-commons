@@ -7,11 +7,12 @@ import {
   NftProxyHttpService,
   TokenAsAServiceDeployerHttpService
 } from "@unleashed-business/opendapps-cloud-ts-commons";
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
+import { HTTP_SERVICE_BASE_URL_TOKEN } from "../nest-commons.const";
 
 @Injectable()
 export class NestHttpServicesContainer extends HttpServicesContainer {
-  constructor(baseUrl: string) {
+  constructor(@Inject(HTTP_SERVICE_BASE_URL_TOKEN) baseUrl: string) {
     super(
       new DecentralizedEntityHttpService(baseUrl),
       new TokenAsAServiceDeployerHttpService(baseUrl),

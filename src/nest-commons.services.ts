@@ -28,6 +28,5 @@ export const nestCommonsServices: Provider[] = [
     useFactory: (notificationService: NotificationService) =>
       new TransactionRunningHelperService(notificationService),
   },
-  NestWeb3ServicesContainer,
-  NestHttpServicesContainer
+  NestWeb3ServicesContainer
 ];
