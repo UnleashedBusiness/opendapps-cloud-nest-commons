@@ -1,0 +1,1 @@
+export const WEB3_CONNECTION = 'WEB3_CONNECTION';
