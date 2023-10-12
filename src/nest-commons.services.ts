@@ -5,8 +5,8 @@ import {
   TransactionRunningHelperService
 } from "@unleashed-business/ts-web3-commons";
 import { WEB3_CONNECTION } from "./nest-commons.const";
-import { NestWeb3ServicesContainer } from "./service/web3-services.container";
-import { NestHttpServicesContainer } from "./service/http-services.container";
+import  NestWeb3ServicesContainer  from "./service/web3-services.container";
+import  NestHttpServicesContainer  from "./service/http-services.container";
 
 export const nestCommonsServices: Provider[] = [
   {
