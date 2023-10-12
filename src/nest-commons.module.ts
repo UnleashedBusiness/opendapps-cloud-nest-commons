@@ -8,7 +8,7 @@ import { HTTP_SERVICE_BASE_URL_TOKEN } from "./nest-commons.const";
   exports: [...nestCommonsServices],
 })
 export default class NestCommonsModule {
-  public forRoot(config: { baseHttpBackendUrl: string }): DynamicModule {
+  public static forRoot(config: { baseHttpBackendUrl: string }): DynamicModule {
     return {
       module: NestCommonsModule,
       providers: [
