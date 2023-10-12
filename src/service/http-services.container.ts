@@ -11,7 +11,7 @@ import { Inject, Injectable } from "@nestjs/common";
 import { HTTP_SERVICE_BASE_URL_TOKEN } from "../nest-commons.const";
 
 @Injectable()
-export class NestHttpServicesContainer extends HttpServicesContainer {
+export default class NestHttpServicesContainer extends HttpServicesContainer {
   constructor(@Inject(HTTP_SERVICE_BASE_URL_TOKEN) baseUrl: string) {
     super(
       new DecentralizedEntityHttpService(baseUrl),
