@@ -58,7 +58,7 @@ export default class NestWeb3ServicesContainer extends Web3ServicesContainer {
       new UniswapFactoryContract(walletConnection, transactionHelper),
       new OwnershipNftCollectionContract(walletConnection, transactionHelper),
       new OwnershipSharesNftCollectionContract(walletConnection, transactionHelper),
-      new ReferralEngineContract(erc20, walletConnection, transactionHelper),
+      new ReferralEngineContract(walletConnection, transactionHelper),
       new ContractDeployerContract(erc20, walletConnection, transactionHelper),
       new WethContract(erc20, walletConnection, transactionHelper),
     );
