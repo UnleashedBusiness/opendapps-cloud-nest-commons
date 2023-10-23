@@ -9,7 +9,7 @@ import NftStorageClient from "@unleashed-business/ts-web3-commons/dist/storage/n
 
 @Module({
   providers: [...nestCommonsServices],
-  exports: [...nestCommonsServices, WEB3_STORAGE_DI_TOKEN],
+  exports: [...nestCommonsServices],
 })
 export default class NestCommonsModule {
   public static forRoot(config: {
@@ -47,6 +47,10 @@ export default class NestCommonsModule {
     return {
       module: NestCommonsModule,
       providers: providers,
+      exports: [
+        WEB3_STORAGE_DI_TOKEN,
+        NftStorageClient
+      ]
     };
   }
 }
