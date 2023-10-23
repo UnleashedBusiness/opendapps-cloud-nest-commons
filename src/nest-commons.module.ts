@@ -24,6 +24,10 @@ export default class NestCommonsModule {
       },
       HttpServicesContainer,
     ];
+    const exports: (Provider | string)[] = [
+      HttpServicesContainer,
+      HTTP_SERVICE_BASE_URL_TOKEN,
+    ];
     if (
       config.nftStorageBaseUrl !== undefined &&
       config.nftStorageAuthToken !== undefined
@@ -43,14 +47,12 @@ export default class NestCommonsModule {
           useFactory: (nftStorage: NftStorageClient) => nftStorage,
         },
       );
+      exports.push(WEB3_STORAGE_DI_TOKEN, NftStorageClient);
     }
     return {
       module: NestCommonsModule,
       providers: providers,
-      exports: [
-        WEB3_STORAGE_DI_TOKEN,
-        NftStorageClient
-      ]
+      exports: exports
     };
   }
 }
