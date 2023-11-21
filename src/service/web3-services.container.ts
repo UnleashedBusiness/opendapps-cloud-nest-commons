@@ -20,47 +20,47 @@ import {
   TokenRewardsTreasuryContract, Web3ServicesContainer
 } from "@unleashed-business/opendapps-cloud-ts-commons";
 import {
-  Erc20TokenContract, TransactionRunningHelperService,
-  UniswapFactoryContract, ReadOnlyWeb3Connection,
+  Erc20TokenContract,
+  UniswapFactoryContract,
   UniswapPairContract,
   UniswapRouterContract, WethContract
 } from "@unleashed-business/ts-web3-commons";
 import { Inject, Injectable } from "@nestjs/common";
-import { WEB3_CONNECTION } from "../nest-commons.const";
+import { WEB3_CONTRACT_TOOLKIT_DI_TOKEN } from "../nest-commons.const";
+import ContractToolkitService from "@unleashed-business/ts-web3-commons/dist/contract/utils/contract-toolkit.service";
 
 @Injectable()
 export default class NestWeb3ServicesContainer extends Web3ServicesContainer {
   constructor(
-    @Inject(WEB3_CONNECTION)
-    walletConnection: ReadOnlyWeb3Connection,
-    transactionHelper: TransactionRunningHelperService
+    @Inject(WEB3_CONTRACT_TOOLKIT_DI_TOKEN)
+      toolkit: ContractToolkitService
   ) {
-    const erc20 = new Erc20TokenContract(walletConnection, transactionHelper);
+    const erc20 = new Erc20TokenContract(toolkit);
     super(
-      new OpenDAppsCloudRouterContract(walletConnection, transactionHelper),
-      new DecentralizedEntityDeployerContract(walletConnection, transactionHelper),
-      new TokenAsAServiceDeployerContract(erc20, walletConnection, transactionHelper),
-      new StakingAsAServiceDeployerContract(walletConnection, transactionHelper),
-      new DecentralizedEntityInterfaceContract(walletConnection, transactionHelper),
-      new GovernorInterfaceContract(walletConnection, transactionHelper),
-      new SingleOwnerEntityContract(walletConnection, transactionHelper),
-      new MultiSignEntityContract(walletConnection, transactionHelper),
-      new MultiSignSharesEntityContract(walletConnection, transactionHelper),
+      new OpenDAppsCloudRouterContract(toolkit),
+      new DecentralizedEntityDeployerContract(toolkit),
+      new TokenAsAServiceDeployerContract(erc20, toolkit),
+      new StakingAsAServiceDeployerContract(toolkit),
+      new DecentralizedEntityInterfaceContract(toolkit),
+      new GovernorInterfaceContract(toolkit),
+      new SingleOwnerEntityContract(toolkit),
+      new MultiSignEntityContract(toolkit),
+      new MultiSignSharesEntityContract(toolkit),
       erc20,
-      new TokenAsAServiceContract(walletConnection, transactionHelper),
-      new StakingAsAServiceContract(erc20, walletConnection, transactionHelper),
-      new DymanicTokenomicsContractService(erc20, walletConnection, transactionHelper),
-      new InflationContract(erc20, walletConnection, transactionHelper),
-      new TokenLiquidityTreasuryContract(erc20, walletConnection, transactionHelper),
-      new TokenRewardsTreasuryContract(erc20, walletConnection, transactionHelper),
-      new UniswapRouterContract(erc20, walletConnection, transactionHelper),
-      new UniswapPairContract(walletConnection, transactionHelper),
-      new UniswapFactoryContract(walletConnection, transactionHelper),
-      new OwnershipNftCollectionContract(walletConnection, transactionHelper),
-      new OwnershipSharesNftCollectionContract(walletConnection, transactionHelper),
-      new ReferralEngineContract(walletConnection, transactionHelper),
-      new ContractDeployerContract(erc20, walletConnection, transactionHelper),
-      new WethContract(erc20, walletConnection, transactionHelper),
+      new TokenAsAServiceContract(toolkit),
+      new StakingAsAServiceContract(erc20, toolkit),
+      new DymanicTokenomicsContractService(erc20, toolkit),
+      new InflationContract(erc20, toolkit),
+      new TokenLiquidityTreasuryContract(erc20, toolkit),
+      new TokenRewardsTreasuryContract(erc20, toolkit),
+      new UniswapRouterContract(erc20, toolkit),
+      new UniswapPairContract(toolkit),
+      new UniswapFactoryContract(toolkit),
+      new OwnershipNftCollectionContract(toolkit),
+      new OwnershipSharesNftCollectionContract(toolkit),
+      new ReferralEngineContract(toolkit),
+      new ContractDeployerContract(erc20, toolkit),
+      new WethContract(erc20, toolkit)
     );
   }
 }

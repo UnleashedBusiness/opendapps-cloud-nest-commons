@@ -4,9 +4,10 @@ import {
   ReadOnlyWeb3ConnectionService,
   TransactionRunningHelperService
 } from "@unleashed-business/ts-web3-commons";
-import { WEB3_CONNECTION } from "./nest-commons.const";
+import { WEB3_CONNECTION, WEB3_CONTRACT_TOOLKIT_DI_TOKEN } from "./nest-commons.const";
 import  NestWeb3ServicesContainer  from "./service/web3-services.container";
 import NftStorageClient from "@unleashed-business/ts-web3-commons/dist/storage/nft-storage.client";
+import ContractToolkitService from "@unleashed-business/ts-web3-commons/dist/contract/utils/contract-toolkit.service";
 
 export const nestCommonsServices: Provider[] = [
   {
@@ -28,5 +29,4 @@ export const nestCommonsServices: Provider[] = [
     useFactory: (notificationService: NotificationService) =>
       new TransactionRunningHelperService(notificationService),
   },
-  NestWeb3ServicesContainer
 ];
