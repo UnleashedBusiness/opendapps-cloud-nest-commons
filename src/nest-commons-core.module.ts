@@ -5,15 +5,20 @@ import {
 } from "./nest-commons.const";
 import { HttpServicesContainer } from "@unleashed-business/opendapps-cloud-ts-commons";
 import NftStorageClient from "@unleashed-business/ts-web3-commons/dist/storage/nft-storage.client";
-import { ReadOnlyWeb3ConnectionService, TransactionRunningHelperService } from "@unleashed-business/ts-web3-commons";
-import ContractToolkitService from "@unleashed-business/ts-web3-commons/dist/contract/utils/contract-toolkit.service";
+import {
+  ContractGeneralConfig,
+  ContractToolkitService,
+  ReadOnlyWeb3ConnectionService,
+  TransactionRunningHelperService,
+} from "@unleashed-business/ts-web3-commons";
 import NestWeb3ServicesContainer from "./service/web3-services.container";
-import ContractGeneralConfig from "@unleashed-business/ts-web3-commons/dist/contract/utils/contract-general.config";
 
 const defaultGeneralContractConfig: ContractGeneralConfig = {
   estimateGasMultiplier: 1.15,
   executionConfirmation: 1,
-  executionReceiptTimeout: 10_000
+  executionReceiptTimeout: 10_000,
+  blockMintingTolerance: 30,
+  blockMintingToleranceIntervalMilliseconds: 10_000
 }
 
 @Global()

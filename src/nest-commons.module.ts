@@ -1,7 +1,7 @@
 import { DynamicModule, Module } from "@nestjs/common";
 import { nestCommonsServices } from "./nest-commons.services";
 import NestCommonsCoreModule from "./nest-commons-core.module";
-import ContractGeneralConfig from "@unleashed-business/ts-web3-commons/dist/contract/utils/contract-general.config";
+import { ContractGeneralConfig } from "@unleashed-business/ts-web3-commons";
 
 @Module({
   providers: [...nestCommonsServices],
