@@ -1,15 +1,18 @@
 import { DynamicModule, Global, Module, Provider } from "@nestjs/common";
 import {
-  HTTP_SERVICE_BASE_URL_TOKEN, WEB3_CONNECTION, WEB3_CONTRACT_TOOLKIT_DI_TOKEN,
-  WEB3_STORAGE_DI_TOKEN
+  HTTP_SERVICE_BASE_URL_TOKEN,
+  WEB3_CONNECTION,
+  WEB3_CONTRACT_TOOLKIT_DI_TOKEN,
+  WEB3_STORAGE_DI_TOKEN,
 } from "./nest-commons.const";
 import { HttpServicesContainer } from "@unleashed-business/opendapps-cloud-ts-commons";
 import NftStorageClient from "@unleashed-business/ts-web3-commons/dist/storage/nft-storage.client";
 import {
   ContractGeneralConfig,
-  ContractToolkitService, NotificationService,
+  ContractToolkitService,
+  NotificationService,
   ReadOnlyWeb3ConnectionService,
-  TransactionRunningHelperService
+  TransactionRunningHelperService,
 } from "@unleashed-business/ts-web3-commons";
 import NestWeb3ServicesContainer from "./service/web3-services.container";
 
@@ -18,8 +21,8 @@ const defaultGeneralContractConfig: ContractGeneralConfig = {
   executionConfirmation: 1,
   executionReceiptTimeout: 10_000,
   blockMintingTolerance: 30,
-  blockMintingToleranceIntervalMilliseconds: 10_000
-}
+  blockMintingToleranceIntervalMilliseconds: 10_000,
+};
 
 @Global()
 @Module({
@@ -33,7 +36,7 @@ export default class NestCommonsCoreModule {
     baseHttpBackendUrl: string;
     nftStorageBaseUrl?: string | undefined;
     nftStorageAuthToken?: string | undefined;
-    contractGeneralConfig?: ContractGeneralConfig
+    contractGeneralConfig?: ContractGeneralConfig;
   }): DynamicModule {
     const providers: Provider[] = [
       {
@@ -41,10 +44,24 @@ export default class NestCommonsCoreModule {
         useValue: config.baseHttpBackendUrl,
       },
       {
+        provide: ContractToolkitService,
+        inject: [
+          TransactionRunningHelperService,
+          ReadOnlyWeb3ConnectionService,
+        ],
+        useFactory: (
+          trh: TransactionRunningHelperService,
+          web3: ReadOnlyWeb3ConnectionService,
+        ) =>
+          new ContractToolkitService(
+            web3,
+            trh,
+            config.contractGeneralConfig ?? defaultGeneralContractConfig,
+          ),
+      },
+      {
         provide: WEB3_CONTRACT_TOOLKIT_DI_TOKEN,
-        inject: [TransactionRunningHelperService, ReadOnlyWeb3ConnectionService],
-        useFactory: (trh: TransactionRunningHelperService, web3: ReadOnlyWeb3ConnectionService) =>
-          new ContractToolkitService(web3, trh, config.contractGeneralConfig ?? defaultGeneralContractConfig),
+        useExisting: ContractToolkitService,
       },
       {
         provide: NotificationService,
@@ -65,8 +82,13 @@ export default class NestCommonsCoreModule {
         useFactory: (notificationService: NotificationService) =>
           new TransactionRunningHelperService(notificationService),
       },
+      {
+        provide: NestWeb3ServicesContainer,
+        inject: [ContractToolkitService],
+        useFactory: (cts: ContractToolkitService) =>
+          new NestWeb3ServicesContainer(cts),
+      },
       HttpServicesContainer,
-      NestWeb3ServicesContainer
     ];
     const exports: (Provider | string)[] = [
       HttpServicesContainer,
@@ -74,7 +96,8 @@ export default class NestCommonsCoreModule {
       NotificationService,
       TransactionRunningHelperService,
       WEB3_CONNECTION,
-      WEB3_CONTRACT_TOOLKIT_DI_TOKEN
+      WEB3_CONTRACT_TOOLKIT_DI_TOKEN,
+      NestWeb3ServicesContainer
     ];
     if (
       config.nftStorageBaseUrl !== undefined &&
