@@ -1,15 +1,15 @@
 import { DynamicModule, Global, Module, Provider } from "@nestjs/common";
 import {
-  HTTP_SERVICE_BASE_URL_TOKEN, WEB3_CONTRACT_TOOLKIT_DI_TOKEN,
+  HTTP_SERVICE_BASE_URL_TOKEN, WEB3_CONNECTION, WEB3_CONTRACT_TOOLKIT_DI_TOKEN,
   WEB3_STORAGE_DI_TOKEN
 } from "./nest-commons.const";
 import { HttpServicesContainer } from "@unleashed-business/opendapps-cloud-ts-commons";
 import NftStorageClient from "@unleashed-business/ts-web3-commons/dist/storage/nft-storage.client";
 import {
   ContractGeneralConfig,
-  ContractToolkitService,
+  ContractToolkitService, NotificationService,
   ReadOnlyWeb3ConnectionService,
-  TransactionRunningHelperService,
+  TransactionRunningHelperService
 } from "@unleashed-business/ts-web3-commons";
 import NestWeb3ServicesContainer from "./service/web3-services.container";
 
@@ -46,12 +46,35 @@ export default class NestCommonsCoreModule {
         useFactory: (trh: TransactionRunningHelperService, web3: ReadOnlyWeb3ConnectionService) =>
           new ContractToolkitService(web3, trh, config.contractGeneralConfig ?? defaultGeneralContractConfig),
       },
+      {
+        provide: NotificationService,
+        useValue: new NotificationService(),
+      },
+      {
+        provide: ReadOnlyWeb3ConnectionService,
+        useFactory: () => new ReadOnlyWeb3ConnectionService(),
+      },
+      {
+        provide: WEB3_CONNECTION,
+        inject: [ReadOnlyWeb3ConnectionService],
+        useFactory: (service: ReadOnlyWeb3ConnectionService) => service,
+      },
+      {
+        provide: TransactionRunningHelperService,
+        inject: [NotificationService],
+        useFactory: (notificationService: NotificationService) =>
+          new TransactionRunningHelperService(notificationService),
+      },
       HttpServicesContainer,
       NestWeb3ServicesContainer
     ];
     const exports: (Provider | string)[] = [
       HttpServicesContainer,
       HTTP_SERVICE_BASE_URL_TOKEN,
+      NotificationService,
+      TransactionRunningHelperService,
+      WEB3_CONNECTION,
+      WEB3_CONTRACT_TOOLKIT_DI_TOKEN
     ];
     if (
       config.nftStorageBaseUrl !== undefined &&
