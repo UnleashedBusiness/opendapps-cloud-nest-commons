@@ -59,6 +59,14 @@ import {
   UniswapFactoryAbiFunctional
 } from "@unleashed-business/ts-web3-commons/dist/abi/uniswap-factory.abi";
 import { WETHAbi, WETHAbiFunctional } from "@unleashed-business/ts-web3-commons/dist/abi/weth.abi";
+import {
+  PresaleServiceAbi,
+  PresaleServiceAbiFunctional
+} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/presale-service.abi";
+import {
+  PresaleServiceDeployerAbi,
+  PresaleServiceDeployerAbiFunctional
+} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/presale-service-deployer.abi";
 
 @Injectable()
 export default class NestWeb3ServicesContainer extends Web3ServicesContainer {
@@ -93,6 +101,8 @@ export default class NestWeb3ServicesContainer extends Web3ServicesContainer {
       new Web3Contract<ReferralsEngineAbiFunctional>(toolkit, ReferralsEngineAbi),
       new Web3Contract<ContractDeployerAbiFunctional>(toolkit, ContractDeployerAbi),
       new Web3Contract<WETHAbiFunctional>(toolkit, WETHAbi),
+      new Web3Contract<PresaleServiceAbiFunctional>(toolkit, PresaleServiceAbi),
+      new Web3Contract<PresaleServiceDeployerAbiFunctional>(toolkit, PresaleServiceDeployerAbi),
     );
   }
 }
