@@ -11,23 +11,24 @@
   "files": [
     "dist"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@unleashed-business/opendapps-cloud-ts-abi": "^2.6.0",
+    "@unleashed-business/opendapps-cloud-ts-commons": "^6.0.1",
+    "@unleashed-business/ts-web3-commons": "^6.0.1"
+  },
   "devDependencies": {
     "@types/node": "^20.6.3",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",
     "eslint": "^8.36.0",
     "eslint-plugin-import": "^2.27.5",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   },
   "peerDependencies": {
     "@nestjs/axios": ">=3.0.0",
     "@nestjs/common": ">=10.0.0",
     "@nestjs/core": ">=10.0.0",
     "@nestjs/platform-express": ">=10.0.0",
-    "@unleashed-business/opendapps-cloud-ts-abi": ">=2.3.0",
-    "@unleashed-business/opendapps-cloud-ts-commons": ">=5.1.0",
-    "@unleashed-business/ts-web3-commons": ">=5.0.0",
     "axios": ">=1.6.0",
     "rxjs": ">=7.8.1",
     "class-transformer": "*",
