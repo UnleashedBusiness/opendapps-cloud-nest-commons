@@ -4,9 +4,9 @@ import {
   WEB3_CONNECTION,
   WEB3_CONTRACT_TOOLKIT_DI_TOKEN,
   WEB3_STORAGE_DI_TOKEN,
-} from "./nest-commons.const";
+} from "./nest-commons.const.js";
 import { HttpServicesContainer } from "@unleashed-business/opendapps-cloud-ts-commons";
-import NftStorageClient from "@unleashed-business/ts-web3-commons/dist/storage/nft-storage.client";
+import NftStorageClient from "@unleashed-business/ts-web3-commons/dist/storage/nft-storage.client.js";
 import {
   ContractGeneralConfig,
   ContractToolkitService,
@@ -14,7 +14,7 @@ import {
   ReadOnlyWeb3ConnectionService,
   TransactionRunningHelperService,
 } from "@unleashed-business/ts-web3-commons";
-import NestWeb3ServicesContainer from "./service/web3-services.container";
+import NestWeb3ServicesContainer from "./service/web3-services.container.js";
 
 const defaultGeneralContractConfig: ContractGeneralConfig = {
   estimateGasMultiplier: 1.15,

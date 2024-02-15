@@ -1,5 +1,5 @@
 import { DynamicModule, Module } from "@nestjs/common";
-import NestCommonsCoreModule from "./nest-commons-core.module";
+import NestCommonsCoreModule from "./nest-commons-core.module.js";
 import { ContractGeneralConfig } from "@unleashed-business/ts-web3-commons";
 
 @Module({

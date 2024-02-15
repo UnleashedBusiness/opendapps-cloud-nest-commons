@@ -1,14 +1,14 @@
 import { Web3ServicesContainer } from "@unleashed-business/opendapps-cloud-ts-commons";
 import { Inject, Injectable } from "@nestjs/common";
-import { WEB3_CONTRACT_TOOLKIT_DI_TOKEN } from "../nest-commons.const";
+import { WEB3_CONTRACT_TOOLKIT_DI_TOKEN } from "../nest-commons.const.js";
 import {
   ContractToolkitService,
   Web3Contract,
 } from "@unleashed-business/ts-web3-commons";
-import { Erc20Abi, Erc20AbiFunctional } from "@unleashed-business/ts-web3-commons/dist/abi/erc20.abi";
+import { Erc20Abi, Erc20AbiFunctional } from "@unleashed-business/ts-web3-commons/dist/abi/erc20.abi.js";
 import {
   OpenDAppsCloudRouterAbi, OpenDAppsCloudRouterAbiFunctional
-} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/opendapps-cloud-router.abi";
+} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/opendapps-cloud-router.abi.js";
 import {
   AssetBackingAbi,
   AssetBackingAbiFunctional,
@@ -49,24 +49,24 @@ import {
 import {
   UniswapRouterAbi,
   UniswapRouterAbiFunctional
-} from "@unleashed-business/ts-web3-commons/dist/abi/uniswap-router.abi";
+} from "@unleashed-business/ts-web3-commons/dist/abi/uniswap-router.abi.js";
 import {
   UniswapPairAbi,
   UniswapPairAbiFunctional
-} from "@unleashed-business/ts-web3-commons/dist/abi/uniswap-pair.abi";
+} from "@unleashed-business/ts-web3-commons/dist/abi/uniswap-pair.abi.js";
 import {
   UniswapFactoryAbi,
   UniswapFactoryAbiFunctional
-} from "@unleashed-business/ts-web3-commons/dist/abi/uniswap-factory.abi";
-import { WETHAbi, WETHAbiFunctional } from "@unleashed-business/ts-web3-commons/dist/abi/weth.abi";
+} from "@unleashed-business/ts-web3-commons/dist/abi/uniswap-factory.abi.js";
+import { WETHAbi, WETHAbiFunctional } from "@unleashed-business/ts-web3-commons/dist/abi/weth.abi.js";
 import {
   PresaleServiceAbi,
   PresaleServiceAbiFunctional
-} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/presale-service.abi";
+} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/presale-service.abi.js";
 import {
   PresaleServiceDeployerAbi,
   PresaleServiceDeployerAbiFunctional
-} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/presale-service-deployer.abi";
+} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/presale-service-deployer.abi.js";
 
 @Injectable()
 export default class NestWeb3ServicesContainer extends Web3ServicesContainer {

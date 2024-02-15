@@ -8,14 +8,14 @@ import {
     TokenAsAServiceDeployerHttpService
 } from "@unleashed-business/opendapps-cloud-ts-commons";
 import {Inject, Injectable} from "@nestjs/common";
-import {HTTP_SERVICE_BASE_URL_TOKEN} from "../nest-commons.const";
+import {HTTP_SERVICE_BASE_URL_TOKEN} from "../nest-commons.const.js";
 import {
     PresaleServiceDeployerHttpService
-} from "@unleashed-business/opendapps-cloud-ts-commons/dist/web2/presale-service-deployer-http.service";
-import {BlocktimeHttpService} from "@unleashed-business/opendapps-cloud-ts-commons/dist/web2/blocktime-http.service";
+} from "@unleashed-business/opendapps-cloud-ts-commons/dist/web2/presale-service-deployer-http.service.js";
+import {BlocktimeHttpService} from "@unleashed-business/opendapps-cloud-ts-commons/dist/web2/blocktime-http.service.js";
 import {
     StakingAsAServiceDeployerHttpService
-} from "@unleashed-business/opendapps-cloud-ts-commons/dist/web2/staking-as-a-service-deployer-http.service";
+} from "@unleashed-business/opendapps-cloud-ts-commons/dist/web2/staking-as-a-service-deployer-http.service.js";
 
 @Injectable()
 export default class NestHttpServicesContainer extends HttpServicesContainer {
