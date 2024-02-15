@@ -15,6 +15,7 @@ import {
   TransactionRunningHelperService,
 } from "@unleashed-business/ts-web3-commons";
 import NestWeb3ServicesContainer from "./service/web3-services.container.js";
+import NestHttpServicesContainer from "./service/http-services.container.js";
 
 const defaultGeneralContractConfig: ContractGeneralConfig = {
   estimateGasMultiplier: 1.15,
@@ -88,10 +89,15 @@ export default class NestCommonsCoreModule {
         useFactory: (cts: ContractToolkitService) =>
           new NestWeb3ServicesContainer(cts),
       },
-      HttpServicesContainer,
+      {
+        provide: NestHttpServicesContainer,
+        inject: [],
+        useFactory: () =>
+            new NestHttpServicesContainer(config.baseHttpBackendUrl),
+      },
     ];
     const exports: (Provider | string)[] = [
-      HttpServicesContainer,
+      NestHttpServicesContainer,
       HTTP_SERVICE_BASE_URL_TOKEN,
       NotificationService,
       TransactionRunningHelperService,
