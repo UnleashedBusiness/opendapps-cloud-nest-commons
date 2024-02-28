@@ -14,7 +14,7 @@
   ],
   "dependencies": {
     "@unleashed-business/opendapps-cloud-ts-abi": "^2.6.0",
-    "@unleashed-business/opendapps-cloud-ts-commons": "^6.0.1",
+    "@unleashed-business/opendapps-cloud-ts-commons": "^6.1.0-beta.3",
     "@unleashed-business/ts-web3-commons": "^6.0.1"
   },
   "devDependencies": {
