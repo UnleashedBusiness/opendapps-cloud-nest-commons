@@ -67,6 +67,15 @@ import {
   PresaleServiceDeployerAbi,
   PresaleServiceDeployerAbiFunctional
 } from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/presale-service-deployer.abi.js";
+import {TreasuryAbi, TreasuryAbiFunctional} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/treasury.abi.js";
+import {
+  TreasuryPocketAbi,
+  TreasuryPocketAbiFunctional
+} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/treasury-pocket.abi.js";
+import {
+  TreasuryDeployerAbi,
+  TreasuryDeployerAbiFunctional
+} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/treasury-deployer.abi.js";
 
 @Injectable()
 export default class NestWeb3ServicesContainer extends Web3ServicesContainer {
@@ -103,6 +112,9 @@ export default class NestWeb3ServicesContainer extends Web3ServicesContainer {
       new Web3Contract<WETHAbiFunctional>(toolkit, WETHAbi),
       new Web3Contract<PresaleServiceAbiFunctional>(toolkit, PresaleServiceAbi),
       new Web3Contract<PresaleServiceDeployerAbiFunctional>(toolkit, PresaleServiceDeployerAbi),
+      new Web3Contract<TreasuryAbiFunctional>(toolkit, TreasuryAbi),
+      new Web3Contract<TreasuryPocketAbiFunctional>(toolkit, TreasuryPocketAbi),
+      new Web3Contract<TreasuryDeployerAbiFunctional>(toolkit, TreasuryDeployerAbi),
     );
   }
 }
