@@ -4,7 +4,7 @@ import {
     HttpServicesContainer,
     IndexingHttpService,
     MultiSignProposalHttpService,
-    NftProxyHttpService,
+    NftProxyHttpService, OwnershipHttpService,
     StatsHttpService,
     TokenAsAServiceDeployerHttpService
 } from "@unleashed-business/opendapps-cloud-ts-commons";
@@ -29,11 +29,9 @@ export default class NestHttpServicesContainer extends HttpServicesContainer {
             new MultiSignProposalHttpService(baseUrl),
             new IndexingHttpService(baseUrl),
             new DeploymentHttpService(baseUrl),
-            new PresaleServiceDeployerHttpService(baseUrl),
             new BlocktimeHttpService(baseUrl),
-            new StakingAsAServiceDeployerHttpService(baseUrl),
             new StatsHttpService(baseUrl),
-            new TreasuryDeployerHttpService(baseUrl),
+            new OwnershipHttpService(baseUrl),
         );
     }
 }
