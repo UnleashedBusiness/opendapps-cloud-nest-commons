@@ -81,6 +81,10 @@ import {
     VestingDeployerAbiFunctional
 } from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/vesting-deployer.abi.js";
 import {VestingAbi, VestingAbiFunctional} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/vesting.abi.js";
+import {
+    MultiAssetBackingAbi,
+    MultiAssetBackingAbiFunctional
+} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/multi-asset-backing.abi.js";
 
 @Injectable()
 export default class NestWeb3ServicesContainer extends Web3ServicesContainer {
@@ -92,6 +96,7 @@ export default class NestWeb3ServicesContainer extends Web3ServicesContainer {
             new Web3Contract<OpenDAppsCloudRouterAbiFunctional>(toolkit, OpenDAppsCloudRouterAbi),
             new Web3Contract<BaselineInsuranceServiceDeployerAbiFunctional>(toolkit, BaselineInsuranceServiceDeployerAbi),
             new Web3Contract<AssetBackingAbiFunctional>(toolkit, AssetBackingAbi),
+            new Web3Contract<MultiAssetBackingAbiFunctional>(toolkit, MultiAssetBackingAbi),
             new Web3Contract<DecentralizedEntityDeployerAbiFunctional>(toolkit, DecentralizedEntityDeployerAbi),
             new Web3Contract<TokenAsAServiceDeployerAbiFunctional>(toolkit, TokenAsAServiceDeployerAbi),
             new Web3Contract<StakingAsAServiceDeployerAbiFunctional>(toolkit, StakingAsAServiceDeployerAbi),
