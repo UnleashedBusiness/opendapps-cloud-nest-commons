@@ -33,7 +33,7 @@ export default class CreateIndexingBlocksTable1697308487489
           },
           {
             name: 'block',
-            type: 'integer',
+            type: 'bigint',
             isNullable: false,
           },
         ],
