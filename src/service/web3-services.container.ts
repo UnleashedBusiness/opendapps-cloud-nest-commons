@@ -81,6 +81,18 @@ import {
     VestingDeployerAbiFunctional
 } from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/vesting-deployer.abi.js";
 import {VestingAbi, VestingAbiFunctional} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/vesting.abi.js";
+import {
+    MultiAssetBackingAbi,
+    MultiAssetBackingAbiFunctional
+} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/multi-asset-backing.abi.js";
+import {
+    DistributorAbi,
+    DistributorAbiFunctional
+} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/distributor.abi.js";
+import {
+    DistributorDeployerAbi,
+    DistributorDeployerAbiFunctional
+} from "@unleashed-business/opendapps-cloud-ts-abi/dist/abi/distributor-deployer.abi.js";
 
 @Injectable()
 export default class NestWeb3ServicesContainer extends Web3ServicesContainer {
@@ -92,6 +104,7 @@ export default class NestWeb3ServicesContainer extends Web3ServicesContainer {
             new Web3Contract<OpenDAppsCloudRouterAbiFunctional>(toolkit, OpenDAppsCloudRouterAbi),
             new Web3Contract<BaselineInsuranceServiceDeployerAbiFunctional>(toolkit, BaselineInsuranceServiceDeployerAbi),
             new Web3Contract<AssetBackingAbiFunctional>(toolkit, AssetBackingAbi),
+            new Web3Contract<MultiAssetBackingAbiFunctional>(toolkit, MultiAssetBackingAbi),
             new Web3Contract<DecentralizedEntityDeployerAbiFunctional>(toolkit, DecentralizedEntityDeployerAbi),
             new Web3Contract<TokenAsAServiceDeployerAbiFunctional>(toolkit, TokenAsAServiceDeployerAbi),
             new Web3Contract<StakingAsAServiceDeployerAbiFunctional>(toolkit, StakingAsAServiceDeployerAbi),
@@ -122,6 +135,8 @@ export default class NestWeb3ServicesContainer extends Web3ServicesContainer {
             new Web3Contract<TreasuryDeployerAbiFunctional>(toolkit, TreasuryDeployerAbi),
             new Web3Contract<VestingAbiFunctional>(toolkit, VestingAbi),
             new Web3Contract<VestingDeployerAbiFunctional>(toolkit, VestingDeployerAbi),
+            new Web3Contract<DistributorAbiFunctional>(toolkit, DistributorAbi),
+            new Web3Contract<DistributorDeployerAbiFunctional>(toolkit, DistributorDeployerAbi),
         );
     }
 }
