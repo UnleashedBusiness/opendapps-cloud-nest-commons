@@ -14,7 +14,7 @@
   ],
   "dependencies": {
     "@unleashed-business/opendapps-cloud-ts-abi": "^3.4.4",
-    "@unleashed-business/opendapps-cloud-ts-commons": "^6.5.0-beta.0",
+    "@unleashed-business/opendapps-cloud-ts-commons": "^6.5.0",
     "@unleashed-business/ts-web3-commons": "^6.0.6",
     "hazelcast-client": "^5.3.0"
   },
