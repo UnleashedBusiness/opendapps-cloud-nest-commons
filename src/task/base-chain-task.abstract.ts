@@ -33,12 +33,12 @@ export abstract class BaseChainTaskAbstract<C extends { chainId: number }> imple
     private privateWrapperRun(configuration: C, initial: boolean): any {
         return setTimeout(async () => {
             const lockingKey = await this.lockIfApplicable(configuration);
-            if (lockingKey === undefined) {
-                Logger.debug(`Skipping run because task [${this.name}] did not manage to grab locking.`)
-            }
-
             try {
-                await this.run(configuration);
+                if (lockingKey === undefined) {
+                    Logger.debug(`Skipping run because task [${this.name}] for ${configuration.chainId} did not manage to grab locking.`);
+                } else {
+                    await this.run(configuration);
+                }
             } catch (exp: any) {
                 if (typeof exp.message === 'undefined' || !exp.message.startsWith("[LOCK_ERR]")) {
                     Logger.warn(`Failed to run ${this.name} task: ${exp?.stack}`);
