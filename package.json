@@ -1,6 +1,6 @@
 {
   "name": "@unleashed-business/opendapps-cloud-nest-commons",
-  "version": "2.11.3",
+  "version": "2.11.4",
   "description": "",
   "type": "module",
   "main": "dist/index.js",
