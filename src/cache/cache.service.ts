@@ -52,6 +52,34 @@ export class CacheService {
         }
     }
 
+    public async isLocked<T>(namespace: string, key: string): Promise<boolean> {
+        if (!this.cacheConfig.enabled) return false;
+
+        const namespaceInstance = await this.getNamespace<T>(namespace);
+        return namespaceInstance.isLocked(key);
+    }
+
+    public async lock<T>(namespace: string, key: string, lockTimeout?: number): Promise<void> {
+        if (!this.cacheConfig.enabled) return;
+
+        const namespaceInstance = await this.getNamespace<T>(namespace);
+        await namespaceInstance.lock(key, lockTimeout);
+    }
+
+    public async unlock<T>(namespace: string, key: string): Promise<void> {
+        if (!this.cacheConfig.enabled) return;
+
+        const namespaceInstance = await this.getNamespace<T>(namespace);
+        await namespaceInstance.unlock(key);
+    }
+
+    public async forceUnlock<T>(namespace: string, key: string): Promise<void> {
+        if (!this.cacheConfig.enabled) return;
+
+        const namespaceInstance = await this.getNamespace<T>(namespace);
+        await namespaceInstance.forceUnlock(key);
+    }
+
     private client(): HazelcastClient {
         if (this.service === undefined) {
             throw new Error("Service not initialized yet...");
